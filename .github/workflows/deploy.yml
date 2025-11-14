@@ -44,6 +44,7 @@ jobs:
         env:
           # 设置 base path，如果仓库名不是 username.github.io，则使用仓库名作为 base
           BASE_URL: /${{ github.event.repository.name }}/
+          VITE_BASE_URL: /${{ github.event.repository.name }}/
         run: pnpm build
 
       - name: Setup Pages
