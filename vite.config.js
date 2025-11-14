@@ -19,9 +19,16 @@ const rootPath = fileURLToPath(new URL('.', import.meta.url))
 // https://vite.dev/config/
 // 导出 Vite 配置函数，接收 mode 参数（development、production、test）
 export default defineConfig(({ mode }) => {
+  // 从环境变量获取 base path，如果没有设置则使用默认值
+  // GitHub Pages 部署时，如果仓库名不是 username.github.io，需要设置 base 为 /仓库名/
+  // 可以通过环境变量 BASE_URL 或 VITE_BASE_URL 来设置
+  const base = process.env.BASE_URL || process.env.VITE_BASE_URL || './'
+
   return {
-    // 公共基础路径，'./' 表示相对路径，适用于部署到子路径
-    base: './',
+    // 公共基础路径
+    // 开发环境使用相对路径 './'
+    // GitHub Pages 部署时，如果设置了 BASE_URL 环境变量，则使用该值
+    base,
     // 构建配置选项
     build: {
       // 指定输出目录名称
