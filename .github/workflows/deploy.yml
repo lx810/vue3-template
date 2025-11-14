@@ -27,6 +27,8 @@ jobs:
         run: pnpm install
 
       - name: Build project
+        env:
+          BASE_URL: /vue3-template/
         run: pnpm run build
 
       - name: Upload production-ready build files

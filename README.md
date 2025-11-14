@@ -4,6 +4,7 @@
 
 ## 📚 文档
 
+- [GitHub Pages 部署文档](./docs/DEPLOYMENT.md) - 自动部署配置和使用指南
 - [第三方库集成文档](./docs/INTEGRATION.md) - Ant Design Vue、Lodash-es、ECharts 集成说明
 - [Changelog 和 Release-it 完整指南](./docs/CHANGELOG_AND_RELEASE.md) - 版本管理和发布流程详细说明
 
@@ -90,30 +91,30 @@ pnpm lint:fix
 
 项目已配置 GitHub Actions，当代码推送到 `main` 分支时会自动构建并部署到 GitHub Pages。
 
-#### 首次部署步骤
+**访问地址**：https://lx810.github.io/vue3-template/
 
-1. **启用 GitHub Pages**
-   - 进入 GitHub 仓库的 Settings
-   - 找到 Pages 设置
-   - Source 选择 "GitHub Actions"
+**详细部署文档**：请查看 [部署文档](./docs/DEPLOYMENT.md)
 
-2. **推送代码**
+#### 快速开始
+
+1. **推送代码到 main 分支**
+
    ```bash
    git push origin main
    ```
 
-3. **查看部署状态**
+2. **查看部署状态**
    - 在仓库的 Actions 标签页查看部署进度
-   - 部署完成后，访问 `https://你的用户名.github.io/仓库名/` 查看网站
+   - 部署完成后访问上述地址
 
-#### 访问地址
+#### 首次部署
 
-- 如果仓库名为 `username.github.io`，访问地址为：`https://username.github.io/`
-- 如果仓库名为其他名称（如 `my-vue-app`），访问地址为：`https://username.github.io/my-vue-app/`
+首次部署需要启用 GitHub Pages：
 
-#### 手动触发部署
+- 进入仓库 Settings → Pages
+- Source 选择 "GitHub Actions"
 
-如果需要手动触发部署，可以在 GitHub 仓库的 Actions 标签页中，选择 "Deploy to GitHub Pages" workflow，点击 "Run workflow" 按钮。
+详细步骤请查看 [部署文档](./docs/DEPLOYMENT.md)
 
 ## 📄 License
 
