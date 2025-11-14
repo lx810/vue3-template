@@ -7,6 +7,6 @@ import 'ant-design-vue/dist/reset.css'
 
 const app = createApp(App)
 
-await setupRouter(app) // +
-
-app.mount('#app')
+setupRouter(app).then(() => {
+  app.mount('#app')
+})

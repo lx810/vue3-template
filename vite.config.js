@@ -8,6 +8,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 // 导入 ant-design-vue 的组件解析器
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+// 导入 rollup-plugin-visualizer 用于分析打包体积
+import { visualizer } from 'rollup-plugin-visualizer'
 // 导入 path 模块的 resolve 函数，用于解析文件路径
 import { resolve } from 'node:path'
 // 导入 fileURLToPath 函数，用于将 file:// URL 转换为文件路径
@@ -127,6 +129,14 @@ export default defineConfig(({ mode }) => {
           })
         ],
         include: [/\.vue$/, /\.vue\?vue/, /\.jsx$/] // 匹配要处理的文件类型：.vue 文件和 .jsx 文件
+      }),
+      // 打包分析插件 - 仅在构建时启用
+      visualizer({
+        filename: './dist/stats.html', // 生成的分析报告文件路径
+        open: true, // 构建完成后自动在浏览器中打开报告
+        gzipSize: true, // 显示 gzip 压缩后的大小
+        brotliSize: true, // 显示 brotli 压缩后的大小
+        template: 'treemap' // 使用树状图模板，可选: 'sunburst' | 'treemap' | 'network'
       })
     ]
   }
