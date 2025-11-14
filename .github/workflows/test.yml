@@ -1,0 +1,37 @@
+name: Test Workflow
+
+# 测试工作流 - 用于验证 GitHub Actions 是否正常工作
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  test:
+    name: Test GitHub Actions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Print Hello
+        run: echo "🎉 GitHub Actions 工作正常！"
+
+      - name: Show Git Info
+        run: |
+          echo "当前分支: ${{ github.ref }}"
+          echo "提交 SHA: ${{ github.sha }}"
+          echo "触发者: ${{ github.actor }}"
+          echo "工作流运行 ID: ${{ github.run_id }}"
+
+      - name: List Files
+        run: |
+          echo "📁 项目文件列表:"
+          ls -la
+
+      - name: Check Node.js
+        run: |
+          echo "检查 Node.js 环境..."
+          node --version || echo "Node.js 未安装（这是正常的，此工作流仅用于测试）"
