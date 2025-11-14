@@ -10,6 +10,7 @@
 
 <template>
   <div>
+    123
     <h1>{{ msg }}</h1>
     <button @click="count++">count is: {{ count }}</button>
   </div>
